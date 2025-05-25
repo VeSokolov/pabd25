@@ -1,6 +1,7 @@
 import argparse
 from flask import Flask, render_template, request
 from logging.config import dictConfig
+import joblib
 
 dictConfig(
     {
@@ -28,11 +29,8 @@ dictConfig(
 
 app = Flask(__name__)
 
-import joblib
-
 # Сохранение модели
-MODEL_NAME = "models/linear_regression_v3.pkl"
-
+MODEL_NAME = "src/models/decision_tree_reg_1.pkl"
 
 # Маршрут для отображения формы
 @app.route("/")

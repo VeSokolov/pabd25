@@ -1,0 +1,11 @@
+url_id,total_meters,floors_count,price,rooms_1,rooms_2,rooms_3,first_floor,last_floor
+317647291,21.0,9,8600000,True,False,False,False,False
+317653632,38.9,22,12965000,True,False,False,False,False
+317701857,38.0,28,11900000,True,False,False,False,False
+317719488,61.3,12,42900000,True,False,False,False,False
+317731050,38.2,20,23000000,True,False,False,False,False
+317752563,37.5,58,24500000,True,False,False,False,False
+317763770,32.0,5,8450000,True,False,False,False,True
+317810772,43.1,41,21500000,True,False,False,False,False
+317864280,25.0,14,8450000,True,False,False,True,False
+317900874,33.0,9,9650000,True,False,False,False,False

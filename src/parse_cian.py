@@ -1,5 +1,5 @@
-"""  Parse data from cian.ru
-https://github.com/lenarsaitov/cianparser
+"""
+Собирает данние с Циана в .csv-файл по адресу ./data/raw/
 """
 import datetime
 

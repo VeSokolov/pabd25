@@ -19,7 +19,7 @@ dictConfig(
             },
             "file": {
                 "class": "logging.FileHandler",
-                "filename": "service/flask.log",
+                "filename": "flask.log",
                 "formatter": "default",
             },
         },
@@ -30,7 +30,7 @@ dictConfig(
 app = Flask(__name__)
 
 # Сохранение модели
-MODEL_NAME = "src/models/decision_tree_reg_1.pkl"
+MODEL_NAME = "../src/models/decision_tree_reg_1.pkl"
 
 # Маршрут для отображения формы
 @app.route("/")

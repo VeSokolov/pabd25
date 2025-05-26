@@ -18,9 +18,19 @@ import logging
 import joblib
 import numpy as np
 import pandas as pd
-from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
+
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.neighbors import KNeighborsRegressor
+
+
+models_list = {
+    "Decision Tree": DecisionTreeRegressor(max_depth=5),
+    "Linear Regression": LinearRegression(),
+    "K Neighbors": KNeighborsRegressor(),
+}
 
 TEST_SIZE = 0.2
 N_ROOMS = 1  # just for the parsing step
@@ -37,9 +47,7 @@ logging.basicConfig(
 
 def parse_cian(n_rooms=1):
     """
-    Parse data to data/raw
-    :param int n_rooms: The number of flats rooms
-    :return None
+    Дублирует код из parse_cian.py (??)
     """
     moscow_parser = cianparser.CianParser(location="Москва")
 
@@ -62,7 +70,7 @@ def parse_cian(n_rooms=1):
 
 def preprocess_data(test_size):
     """
-    Filter, sort and remove duplicates
+    Чистка данных и разбиение на TRAIN и TEST. Они сохраняются в ./data/processed/
     """
     raw_data_path = "./data/raw"
     file_list = glob.glob(raw_data_path + "/*.csv")
@@ -104,8 +112,10 @@ def preprocess_data(test_size):
     test_df.to_csv("data/processed/test.csv")
 
 
-def train_model(model_path):
-    """Train model and save with MODEL_NAME"""
+def train_model(model_path, model_name="Linear Regression"):
+    """
+    Обучение модели (на данный момент - дерево решений)
+    """
     train_df = pd.read_csv("data/processed/train.csv")
     X = train_df[
         [
@@ -119,7 +129,7 @@ def train_model(model_path):
         ]
     ]
     y = train_df["price"]
-    model = DecisionTreeRegressor(max_depth=5)
+    model = models_list[model_name]
     model.fit(X.values, y)
 
     logging.info(f"Train {model} and save to {model_path}")

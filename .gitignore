@@ -2,4 +2,3 @@
 *.log
 notebooks/.ipynb_checkpoints
 __pycache__/
-/src/models/decision_tree_reg_1.pkl

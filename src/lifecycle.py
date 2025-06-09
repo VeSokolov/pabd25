@@ -52,7 +52,7 @@ def parse_cian(n_rooms=1):
     moscow_parser = cianparser.CianParser(location="Москва")
 
     t = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
-    csv_path = f"data/raw/{n_rooms}_{t}.csv"
+    csv_path = f"../data/raw/{n_rooms}_{t}.csv"
     data = moscow_parser.get_flats(
         deal_type="sale",
         rooms=(n_rooms,),
@@ -72,7 +72,7 @@ def preprocess_data(test_size):
     """
     Чистка данных и разбиение на TRAIN и TEST. Они сохраняются в ./data/processed/
     """
-    raw_data_path = "./data/raw"
+    raw_data_path = "../data/raw"
     file_list = glob.glob(raw_data_path + "/*.csv")
     logging.info(f"Preprocess_data. Use files to train: {file_list}")
     df = pd.read_csv(file_list[0])
@@ -116,7 +116,7 @@ def train_model(model_path, model_name="Linear Regression"):
     """
     Обучение модели (на данный момент - дерево решений)
     """
-    train_df = pd.read_csv("data/processed/train.csv")
+    train_df = pd.read_csv("../data/processed/train.csv")
     X = train_df[
         [
             "total_meters",
@@ -139,8 +139,8 @@ def train_model(model_path, model_name="Linear Regression"):
 
 def test_model(model_path):
     """Test model with new data"""
-    test_df = pd.read_csv("data/processed/test.csv")
-    train_df = pd.read_csv("data/processed/train.csv")
+    test_df = pd.read_csv("../data/processed/test.csv")
+    train_df = pd.read_csv("../data/processed/train.csv")
     X_test = test_df[
         [
             "total_meters",

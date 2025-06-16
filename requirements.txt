@@ -6,3 +6,9 @@ scikit-learn
 matplotlib
 black
 dvc[s3]
+
+DateTime
+joblib
+numpy
+pendulum
+apache-airflow
